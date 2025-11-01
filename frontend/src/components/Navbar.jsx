@@ -2,11 +2,13 @@ import { BookOpenIcon , ShoppingBagIcon} from 'lucide-react'
 import { Link , useResolvedPath } from "react-router-dom";
 import ThemeSelector from "./ThemeSelector";
 import React from 'react'
+import {useBookStore} from "../store/useBookStore"
 
 function Navbar() {
 
     const { pathname } = useResolvedPath();
     const isHomePage = pathname === "/";
+    const {books} = useBookStore();
 
     return (
         <div className='bg-base-100/10 backdrop-blur-lg border-b border-base-conten/10 sticky top-0 z-50'>
@@ -35,7 +37,7 @@ function Navbar() {
                     <div className="p-2 rounded-full hover:bg-base-200 transition-colors">
                     <ShoppingBagIcon className="size-5" />
                     <span className="badge badge-sm badge-primary indicator-item">
-                        8
+                        {books.length}
                     </span>
                     </div>
                 </div>
